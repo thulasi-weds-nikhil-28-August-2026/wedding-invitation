@@ -1,0 +1,1144 @@
+/* ==========================================================
+   TULASI ❤️ NIKHIL
+   WEDDING INVITATION
+========================================================== */
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#F8F2E9;
+
+    color:#333;
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+}
+
+/* ==========================================================
+   GLOBAL
+========================================================== */
+
+img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    user-select:none;
+
+    pointer-events:none;
+
+}
+
+button{
+
+    font-family:inherit;
+
+    cursor:pointer;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+/* ==========================================================
+   LOADER
+========================================================== */
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#F8F2E9;
+
+    z-index:99999;
+
+    transition:opacity .8s ease,
+               visibility .8s ease;
+
+}
+
+.loader-content{
+
+    width:min(90%,520px);
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+.flower{
+
+    font-size:70px;
+
+    color:#B17835;
+
+    animation:float 2.5s ease-in-out infinite;
+
+}
+
+.loader-content h1{
+
+    margin-top:20px;
+
+    font-family:'Cinzel',serif;
+
+    font-size:40px;
+
+    color:#7B2D26;
+
+}
+
+.loader-content p{
+
+    margin-top:18px;
+
+    line-height:1.8;
+
+    color:#666;
+
+    font-size:16px;
+
+}
+
+.loading-spinner{
+
+    width:56px;
+
+    height:56px;
+
+    margin:28px auto;
+
+    border-radius:50%;
+
+    border:4px solid #E3D7C6;
+
+    border-top-color:#B17835;
+
+    animation:spin 1s linear infinite;
+
+}
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   INVITATION LAYOUT
+========================================================== */
+
+#invitation{
+
+    width:100%;
+
+}
+
+/* Every image occupies one section */
+
+.page{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#F8F2E9;
+
+    overflow:hidden;
+
+}
+
+/* Artboard */
+
+.page-wrapper{
+
+    position:relative;
+
+    width:min(100%,1600px);
+
+    margin:auto;
+
+    animation:fadeUp .8s ease both;
+
+}
+
+/* Desktop shadow */
+
+@media (min-width:1200px){
+
+.page-wrapper{
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+}
+
+/* ==========================================================
+   COMMON BUTTON STYLE
+========================================================== */
+
+button,
+.venue-button{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#B17835;
+
+    color:#fff;
+
+    font-weight:600;
+
+    font-size:16px;
+
+    transition:.3s;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+}
+
+button:hover,
+.venue-button:hover{
+
+    background:#98692C;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   COUNTDOWN COMMON
+========================================================== */
+
+.count-item{
+
+    text-align:center;
+
+    color:#7B2D26;
+
+}
+
+.count-item span{
+
+    display:block;
+
+    font-family:'Cinzel',serif;
+
+    font-size:2.7rem;
+
+    font-weight:600;
+
+    animation:fadeUp .5s ease;
+
+}
+
+.count-item small{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:.75rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    color:#555;
+
+}
+
+/* ==========================================================
+   FUNCTIONS PAGE
+   Four invisible clickable hit-areas over the "LOCATION" bars
+   printed in images/functions.png — coordinates are baked into
+   each href, never shown on screen. Boxes measured directly
+   against the artwork (all four bars share the same y-band).
+========================================================== */
+
+#functionsPage{
+
+    position:relative;
+
+}
+
+#functionsPage .fn-location-link{
+
+    position:absolute;
+
+    top:83.6%;
+
+    bottom:7.85%;
+
+    display:block;
+
+    cursor:pointer;
+
+}
+
+#functionsPage .fn-location-link:focus-visible{
+
+    outline:2px solid #fff;
+
+    outline-offset:-2px;
+
+}
+
+#loc-mehendi{ left:4.5%;  right:75.5%; }
+
+#loc-nalugu{  left:28.5%; right:52.0%; }
+
+#loc-haldi{   left:52.0%; right:28.5%; }
+
+#loc-sangeet{ left:75.5%; right:4.5%;  }
+
+/* ==========================================================
+   VENUE PAGE
+========================================================== */
+
+#venuePage{
+
+    position:relative;
+
+}
+
+/* Overlay sits in the clear space below the address text,
+   in the left text column — measured at x:22%-46% (text),
+   button centered under it, above the stone-path artwork
+   that starts near the bottom of the image. */
+
+#venuePage .venue-overlay{
+
+    position:absolute;
+
+    left:14%;
+
+    right:52%;
+
+    top:75%;
+
+    bottom:11%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* View Location button */
+
+#venuePage .venue-button{
+
+    width:clamp(90px,15vw,230px);
+
+    height:clamp(12px,4.3vw,46px);
+
+    background:#B17835;
+
+    color:#fff;
+
+    font-size:clamp(6px,1.4vw,15px);
+
+    font-weight:600;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+    transition:.3s;
+
+    white-space:nowrap;
+
+}
+
+#venuePage .venue-button:hover{
+
+    background:#98692C;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   FINAL PAGE
+   Countdown + RSVP are pinned with percentage-based coordinates
+   that were measured directly against images/final.png's baked-in
+   gold boxes/text. Because #finalPage (.page-wrapper) always has
+   width:100% (capped at 1600px) and the image inside it is
+   width:100%/height:auto, these percentages track the artwork
+   pixel-for-pixel at any viewport width — no breakpoints needed,
+   and the overlays can never drift from the printed boxes.
+========================================================== */
+
+#finalPage{
+
+    position:relative;
+
+}
+
+/* ==========================================================
+   COUNTDOWN OVERLAY
+   Matches the 4 gold-bordered boxes: measured at left 16.2%,
+   right 84.5%, top 20.1%, bottom 38.4% of the artwork.
+========================================================== */
+
+#finalPage .countdown-overlay{
+
+    position:absolute;
+
+    left:16.2%;
+
+    right:15.5%;
+
+    top:20.1%;
+
+    bottom:61.6%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/* Countdown Container */
+
+#finalPage .countdown-box{
+
+    width:100%;
+
+    height:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+/* Numbers */
+
+#finalPage .count-item span{
+
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(1.05rem,4.2vw,2.7rem);
+
+    font-weight:600;
+
+    color:#7B2D26;
+
+    line-height:1;
+
+}
+
+/* Labels */
+
+#finalPage .count-item small{
+
+    display:block;
+
+    margin-top:clamp(2px,0.6vw,6px);
+
+    font-size:clamp(.45rem,1.1vw,.72rem);
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    color:#555;
+
+}
+
+/* ==========================================================
+   RSVP SECTION
+   Sits directly under the printed "Kindly RSVP and bless the
+   couple" line, right-column: measured at left 55%, right 22%,
+   text bottom ~64.8%. Buttons are vertically centered in the
+   clear space between that text and the footer artwork.
+========================================================== */
+
+#finalPage .rsvp-overlay{
+
+    position:absolute;
+
+    left:58%;
+
+    right:19%;
+
+    top:67%;
+
+    bottom:5%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+}
+
+/* RSVP Button Container */
+
+#finalPage .rsvp-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+/* Buttons — side by side, directly under the "Kindly RSVP" line */
+
+#finalPage .rsvp-buttons .rsvp-btn-row{
+
+    display:flex;
+
+    flex-direction:row;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:clamp(4px,1.6vw,12px);
+
+    width:100%;
+
+}
+
+#finalPage .rsvp-buttons button{
+
+    width:clamp(32px,9vw,90px);
+
+    height:clamp(16px,5vw,40px);
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#B17835;
+
+    color:#fff;
+
+    font-size:clamp(7px,1.8vw,14px);
+
+    font-weight:600;
+
+    line-height:1.1;
+
+    padding:0 clamp(2px,0.8vw,6px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+    transition:all .3s ease;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+/* Hover */
+
+#finalPage .rsvp-buttons button:hover{
+
+    background:#98692C;
+
+    transform:translateY(-3px);
+
+}
+
+/* Active */
+
+#finalPage .rsvp-buttons button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   RSVP POPUP
+========================================================== */
+
+.popup{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.55);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:opacity .35s ease,
+               visibility .35s ease;
+
+    z-index:99999;
+
+}
+
+.popup.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* Popup Card */
+
+.popup-card{
+
+    position:relative;
+
+    width:min(90%,500px);
+
+    background:#FFFDF9;
+
+    border-radius:24px;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+    animation:popupScale .35s ease;
+
+}
+
+/* Popup Animation */
+
+@keyframes popupScale{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* Title */
+
+.popup-card h2{
+
+    font-family:'Cinzel',serif;
+
+    color:#8D2E24;
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+}
+
+/* Message */
+
+.popup-card p{
+
+    color:#555;
+
+    line-height:1.8;
+
+    font-size:1rem;
+
+}
+
+/* Close Button */
+
+#closePopup{
+
+    position:absolute;
+
+    top:14px;
+
+    right:18px;
+
+    font-size:2rem;
+
+    color:#999;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#closePopup:hover{
+
+    color:#8D2E24;
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    .popup-card{
+
+        width:92%;
+
+        padding:32px 24px;
+
+    }
+
+    .popup-card h2{
+
+        font-size:1.6rem;
+
+    }
+
+    .popup-card p{
+
+        font-size:.95rem;
+
+    }
+
+}
+
+/* ==========================================================
+   BACK TO TOP BUTTON
+========================================================== */
+
+#topButton{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#B17835;
+
+    color:#fff;
+
+    font-size:22px;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 22px rgba(0,0,0,.20);
+
+    transition:all .3s ease;
+
+    z-index:999;
+
+}
+
+#topButton:hover{
+
+    background:#98692C;
+
+    transform:translateY(-4px);
+
+}
+
+#topButton.show{
+
+    display:flex;
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    #topButton{
+
+        width:46px;
+
+        height:46px;
+
+        right:15px;
+
+        bottom:15px;
+
+        font-size:20px;
+
+    }
+
+}
+
+/* ==========================================================
+   FINAL RESPONSIVE POLISH
+========================================================== */
+
+/* Large Desktop */
+
+@media (min-width:1600px){
+
+    .page-wrapper{
+
+        max-width:1600px;
+
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:1024px){
+
+    .page-wrapper{
+
+        width:100%;
+
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .loader-content h1{
+
+        font-size:32px;
+
+    }
+
+    .loader-content p{
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+}
+
+/* Small Phones */
+
+@media (max-width:480px){
+
+    .loader-content{
+
+        padding:24px;
+
+    }
+
+    .loader-content h1{
+
+        font-size:28px;
+
+    }
+
+    .loader-content p{
+
+        font-size:14px;
+
+    }
+
+    .flower{
+
+        font-size:56px;
+
+    }
+
+}
+
+/* Prevent horizontal scrolling */
+
+html,
+body{
+
+    overflow-x:hidden;
+
+}
+
+/* Improve tap experience */
+
+button,
+.venue-button{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+/* Smooth transitions */
+
+button,
+.venue-button,
+.popup-card,
+#topButton{
+
+    transition:all .3s ease;
+
+}
+/* ==========================================================
+   DYNAMIC UPGRADE — added on top of the original design
+   (progress bar, dot nav, scroll reveal, RSVP status)
+========================================================== */
+
+/* ---------------- Scroll progress bar ---------------- */
+
+#progressBar{
+
+    position:fixed;
+    top:0;
+    left:0;
+    height:4px;
+    width:0%;
+    background:linear-gradient(90deg,#B17835,#7B2D26);
+    z-index:100000;
+    transition:width .1s linear;
+
+}
+
+/* ---------------- Section dot navigation ---------------- */
+
+#dotNav{
+
+    position:fixed;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:9000;
+
+}
+
+#dotNav .dot{
+
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:rgba(177,120,53,.28);
+    display:block;
+    position:relative;
+    transition:.3s;
+
+}
+
+#dotNav .dot:hover,
+#dotNav .dot.active{
+
+    background:#B17835;
+    transform:scale(1.25);
+
+}
+
+#dotNav .dot span{
+
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform:translateY(-50%);
+    white-space:nowrap;
+    font-size:11px;
+    letter-spacing:.5px;
+    color:#7B2D26;
+    background:#FFFDF9;
+    padding:3px 10px;
+    border-radius:20px;
+    opacity:0;
+    pointer-events:none;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+    transition:opacity .25s ease;
+
+}
+
+#dotNav .dot:hover span{
+
+    opacity:1;
+
+}
+
+@media (max-width:768px){
+
+    #dotNav{
+
+        display:none; /* keep mobile screens uncluttered; back-to-top + scroll still work */
+
+    }
+
+}
+
+/* ---------------- Scroll reveal ---------------- */
+
+.page.reveal .page-wrapper{
+
+    opacity:0;
+    transform:translateY(50px);
+    animation:none; /* override the original load-only fadeUp; JS toggles .in-view instead */
+
+}
+
+.page.reveal.in-view .page-wrapper{
+
+    animation:fadeUp .9s cubic-bezier(.22,1,.36,1) both;
+
+}
+
+/* First section should still be visible immediately, even before JS/IntersectionObserver runs */
+
+.page:first-of-type .page-wrapper{
+
+    opacity:1;
+    transform:none;
+    animation:fadeUp .8s ease both;
+
+}
+
+/* ---------------- RSVP status line ---------------- */
+
+.rsvp-status{
+
+    margin-top:clamp(2px,1.5vw,10px);
+    font-size:clamp(6px,2vw,14px);
+    font-style:italic;
+    color:#7B2D26;
+    text-shadow:none;
+    min-height:1em;
+    text-align:center;
+
+}
+
+#finalPage .rsvp-buttons button.selected{
+
+    background:#7B2D26;
+    box-shadow:0 0 0 3px rgba(255,255,255,.55) inset;
+
+}
