@@ -5,58 +5,50 @@
 window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
     const doorScene = document.getElementById("doorScene");
-    const coverIntro = document.getElementById("coverIntro");
-    const invitePlaque = document.getElementById("invitePlaque");
-    const openBtn = document.getElementById("openInvBtn");
     const audio = document.getElementById("bg-music");
 
     const DOOR_ANIM_MS = 1250; // must match .door transition duration in style.css
 
-    // Stage 1 (brief loading moment) -> Stage 2 (closed doors + plaque + button)
-    setTimeout(() => {
-        if (coverIntro) coverIntro.style.display = "none";
-        if (invitePlaque) invitePlaque.style.display = "inline-block";
-        if (openBtn) openBtn.style.display = "inline-block";
-    }, 1400);
+    let opened = false;
 
-    if (openBtn) {
-        openBtn.addEventListener("click", () => {
+    function openInvitation() {
+        if (opened) return;
+        opened = true;
 
-            // Swing the two door halves open
-            if (doorScene) doorScene.classList.add("opening");
+        // Swing/slide the two door halves apart (image splits left/right)
+        if (doorScene) doorScene.classList.add("opening");
 
-            if (audio) {
-                audio.volume = 0.6;
-                const playPromise = audio.play();
+        if (audio) {
+            audio.volume = 0.6;
+            const playPromise = audio.play();
 
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        audio.currentTime = 22; // Skip to 0:22 after it starts
-                    }).catch(e => console.log("Audio play failed:", e));
-                } else {
-                    audio.currentTime = 22;
-                }
-
-                // Loop custom duration: 0:22 to 1:40 (100 seconds)
-                audio.addEventListener("timeupdate", () => {
-                    if (audio.currentTime >= 100) {
-                        audio.currentTime = 22;
-                        audio.play();
-                    }
-                });
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    audio.currentTime = 22; // Skip to 0:22 after it starts
+                }).catch(e => console.log("Audio play failed:", e));
+            } else {
+                audio.currentTime = 22;
             }
 
-            // Once the doors have finished swinging open, remove the cover
-            setTimeout(() => {
-                loader.style.opacity = "0";
-                loader.style.visibility = "hidden";
-            }, DOOR_ANIM_MS);
-        });
-    } else {
+            // Loop custom duration: 0:22 to 1:40 (100 seconds)
+            audio.addEventListener("timeupdate", () => {
+                if (audio.currentTime >= 100) {
+                    audio.currentTime = 22;
+                    audio.play();
+                }
+            });
+        }
+
+        // Once the doors have finished swinging open, remove the cover
         setTimeout(() => {
             loader.style.opacity = "0";
             loader.style.visibility = "hidden";
-        }, 1800);
+        }, DOOR_ANIM_MS);
+    }
+
+    // Clicking/tapping anywhere on the invitation cover opens it
+    if (doorScene) {
+        doorScene.addEventListener("click", openInvitation);
     }
 });
 
