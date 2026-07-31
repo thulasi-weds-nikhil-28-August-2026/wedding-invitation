@@ -971,6 +971,15 @@ button:hover,
 
 @media (max-width:768px) {
 
+    #heroPage {
+        height: auto;
+    }
+
+    #heroPage video {
+        height: auto;
+        object-fit: contain;
+    }
+
     .loader-content h1 {
 
         font-size: 32px;
