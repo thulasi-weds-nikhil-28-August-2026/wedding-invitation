@@ -21,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 
 </head>
 
@@ -55,25 +55,42 @@
 
     <div id="loader">
 
-        <div class="loader-content">
+        <div class="door-scene" id="doorScene">
 
-            <div class="flower">♾️</div>
+            <div class="door door-left"></div>
+            <div class="door door-right"></div>
+            <div class="door-seam"></div>
 
-            <h1>Tulasi ❤️ Nikhil</h1>
+            <div class="cover-overlay">
 
-            <p>
-                With the blessings of our families,
-                we invite you to celebrate our wedding.
-            </p>
+                <div class="loader-content cover-intro" id="coverIntro">
 
-            <div class="loading-spinner"></div>
+                    <div class="flower">♾️</div>
 
-            <button id="openInvBtn"
-                style="display: none; padding: 12px 30px; font-size: 1.2rem; margin-top: 25px; cursor: pointer; font-family: 'Cinzel', serif; background: #7B2D26; color: #FFFDF9; border: none; border-radius: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s ease;">Open
-                Invitation</button>
-            <audio id="bg-music" src="videoplayback.mp3" preload="auto"></audio>
+                    <h1>Tulasi ❤️ Nikhil</h1>
+
+                    <p>
+                        With the blessings of our families,
+                        we invite you to celebrate our wedding.
+                    </p>
+
+                    <div class="loading-spinner"></div>
+
+                </div>
+
+                <div class="invite-plaque" id="invitePlaque">
+                    <span class="plaque-eyebrow">Together with our families</span>
+                    <h2>You Are<br>Invited</h2>
+                    <span class="plaque-names">Tulasi &amp; Nikhil</span>
+                </div>
+
+                <button id="openInvBtn" class="open-btn">Open Invitation</button>
+
+            </div>
 
         </div>
+
+        <audio id="bg-music" src="videoplayback.mp3" preload="auto"></audio>
 
     </div>
 
@@ -249,7 +266,7 @@
 
     <button id="topButton">↑</button>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
 
 </body>
 

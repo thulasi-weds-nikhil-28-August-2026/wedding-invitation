@@ -180,6 +180,212 @@ a {
 }
 
 /* ==========================================================
+   INVITATION DOOR-OPEN COVER
+========================================================== */
+
+.door-scene {
+
+    position: absolute;
+    inset: 0;
+    perspective: 2400px;
+    overflow: hidden;
+
+}
+
+.door {
+
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('images/hero.png');
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    transform-style: preserve-3d;
+    transition: transform 1.25s cubic-bezier(.76, 0, .24, 1),
+        box-shadow 1.25s ease;
+    will-change: transform;
+
+}
+
+.door-left {
+
+    left: 0;
+    background-position: left center;
+    transform-origin: left center;
+    box-shadow: inset -35px 0 45px -22px rgba(0, 0, 0, .5);
+
+}
+
+.door-right {
+
+    right: 0;
+    background-position: right center;
+    transform-origin: right center;
+    box-shadow: inset 35px 0 45px -22px rgba(0, 0, 0, .5);
+
+}
+
+.door-seam {
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    z-index: 3;
+    background: linear-gradient(180deg,
+            rgba(177, 120, 53, 0) 0%,
+            rgba(177, 120, 53, .9) 12%,
+            rgba(177, 120, 53, .9) 88%,
+            rgba(177, 120, 53, 0) 100%);
+    transition: opacity .5s ease;
+
+}
+
+.door-scene.opening .door-left {
+
+    transform: rotateY(-112deg);
+
+}
+
+.door-scene.opening .door-right {
+
+    transform: rotateY(112deg);
+
+}
+
+.door-scene.opening .door-seam {
+
+    opacity: 0;
+
+}
+
+.cover-overlay {
+
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    pointer-events: none;
+    text-align: center;
+
+}
+
+.cover-intro {
+
+    background: none;
+    padding: 0;
+
+}
+
+.invite-plaque {
+
+    display: none;
+    background: rgba(248, 242, 233, .9);
+    border: 1.5px solid #B17835;
+    outline: 1px solid rgba(177, 120, 53, .35);
+    outline-offset: 6px;
+    padding: 26px 42px;
+    border-radius: 3px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .3);
+    animation: fadeUp .8s ease both;
+    transition: opacity .5s ease, transform .5s ease;
+
+}
+
+.plaque-eyebrow {
+
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #B17835;
+    margin-bottom: 10px;
+
+}
+
+.invite-plaque h2 {
+
+    font-family: 'Cinzel', serif;
+    font-size: 34px;
+    line-height: 1.25;
+    color: #7B2D26;
+
+}
+
+.plaque-names {
+
+    display: block;
+    margin-top: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    color: #666;
+
+}
+
+.door-scene.opening .invite-plaque {
+
+    opacity: 0;
+    transform: scale(.85) translateY(-12px);
+
+}
+
+.open-btn {
+
+    display: none;
+    pointer-events: auto;
+    margin-top: 30px;
+    padding: 13px 36px;
+    font-size: 1.05rem;
+    letter-spacing: 1.5px;
+    font-family: 'Cinzel', serif;
+    background: #7B2D26;
+    color: #FFFDF9;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+    transition: opacity .3s ease, transform .2s ease;
+    animation: fadeUp .8s ease .1s both;
+
+}
+
+.open-btn:active {
+
+    transform: scale(.95);
+
+}
+
+.door-scene.opening .open-btn {
+
+    opacity: 0;
+    pointer-events: none;
+
+}
+
+@media (max-width: 480px) {
+
+    .invite-plaque {
+
+        padding: 20px 26px;
+
+    }
+
+    .invite-plaque h2 {
+
+        font-size: 27px;
+
+    }
+
+}
+
+/* ==========================================================
    ANIMATIONS
 ========================================================== */
 
