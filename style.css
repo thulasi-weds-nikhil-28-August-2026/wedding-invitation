@@ -7,29 +7,29 @@
    RESET
 ========================================================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
+body {
 
-    font-family:'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
 
-    background:#F8F2E9;
+    background: #F8F2E9;
 
-    color:#333;
+    color: #333;
 
-    overflow-x:hidden;
+    overflow-x: hidden;
 
-    -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing: antialiased;
 
-    text-rendering:optimizeLegibility;
+    text-rendering: optimizeLegibility;
 
 }
 
@@ -37,118 +37,145 @@ body{
    GLOBAL
 ========================================================== */
 
-img{
+img {
 
-    display:block;
+    display: block;
 
-    width:100%;
+    width: 100%;
 
-    height:auto;
+    height: auto;
 
-    user-select:none;
+    user-select: none;
 
-    pointer-events:none;
-
-}
-
-button{
-
-    font-family:inherit;
-
-    cursor:pointer;
+    pointer-events: none;
 
 }
 
-a{
+button {
 
-    text-decoration:none;
+    font-family: inherit;
 
+    cursor: pointer;
+
+}
+
+a {
+
+    text-decoration: none;
+
+}
+
+#heroPage {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#heroPage video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#functionsPage {
+    width: 100%;
+    height: auto;
+}
+
+#functionsPage video {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* ==========================================================
    LOADER
 ========================================================== */
 
-#loader{
+#loader {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    background:#F8F2E9;
+    background: #F8F2E9;
 
-    z-index:99999;
+    z-index: 99999;
 
-    transition:opacity .8s ease,
-               visibility .8s ease;
-
-}
-
-.loader-content{
-
-    width:min(90%,520px);
-
-    text-align:center;
-
-    padding:30px;
+    transition: opacity .8s ease,
+        visibility .8s ease;
 
 }
 
-.flower{
+.loader-content {
 
-    font-size:70px;
+    width: min(90%, 520px);
 
-    color:#B17835;
+    text-align: center;
 
-    animation:float 2.5s ease-in-out infinite;
-
-}
-
-.loader-content h1{
-
-    margin-top:20px;
-
-    font-family:'Cinzel',serif;
-
-    font-size:40px;
-
-    color:#7B2D26;
+    padding: 30px;
 
 }
 
-.loader-content p{
+.flower {
 
-    margin-top:18px;
+    font-size: 70px;
 
-    line-height:1.8;
+    color: #B17835;
 
-    color:#666;
-
-    font-size:16px;
+    animation: float 2.5s ease-in-out infinite;
 
 }
 
-.loading-spinner{
+.loader-content h1 {
 
-    width:56px;
+    margin-top: 20px;
 
-    height:56px;
+    font-family: 'Cinzel', serif;
 
-    margin:28px auto;
+    font-size: 40px;
 
-    border-radius:50%;
+    color: #7B2D26;
 
-    border:4px solid #E3D7C6;
+}
 
-    border-top-color:#B17835;
+.loader-content p {
 
-    animation:spin 1s linear infinite;
+    margin-top: 18px;
+
+    line-height: 1.8;
+
+    color: #666;
+
+    font-size: 16px;
+
+}
+
+.loading-spinner {
+
+    width: 56px;
+
+    height: 56px;
+
+    margin: 28px auto;
+
+    border-radius: 50%;
+
+    border: 4px solid #E3D7C6;
+
+    border-top-color: #B17835;
+
+    animation: spin 1s linear infinite;
 
 }
 
@@ -156,47 +183,48 @@ a{
    ANIMATIONS
 ========================================================== */
 
-@keyframes spin{
+@keyframes spin {
 
-    to{
+    to {
 
-        transform:rotate(360deg);
-
-    }
-
-}
-
-@keyframes float{
-
-    0%,100%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-10px);
+        transform: rotate(360deg);
 
     }
 
 }
 
-@keyframes fadeUp{
+@keyframes float {
 
-    from{
+    0%,
+    100% {
 
-        opacity:0;
-
-        transform:translateY(40px);
+        transform: translateY(0);
 
     }
 
-    to{
+    50% {
 
-        opacity:1;
+        transform: translateY(-10px);
 
-        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(40px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
 
     }
 
@@ -206,53 +234,53 @@ a{
    INVITATION LAYOUT
 ========================================================== */
 
-#invitation{
+#invitation {
 
-    width:100%;
+    width: 100%;
 
 }
 
 /* Every image occupies one section */
 
-.page{
+.page {
 
-    width:100%;
+    width: 100%;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    background:#F8F2E9;
+    background: #F8F2E9;
 
-    overflow:hidden;
+    overflow: hidden;
 
 }
 
 /* Artboard */
 
-.page-wrapper{
+.page-wrapper {
 
-    position:relative;
+    position: relative;
 
-    width:min(100%,1600px);
+    width: 100%;
 
-    margin:auto;
+    margin: auto;
 
-    animation:fadeUp .8s ease both;
+    animation: fadeUp .8s ease both;
 
 }
 
 /* Desktop shadow */
 
-@media (min-width:1200px){
+@media (min-width:1200px) {
 
-.page-wrapper{
+    .page-wrapper {
 
-    box-shadow:0 8px 25px rgba(0,0,0,.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, .05);
 
-}
+    }
 
 }
 
@@ -261,38 +289,38 @@ a{
 ========================================================== */
 
 button,
-.venue-button{
+.venue-button {
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    border:none;
+    border: none;
 
-    border-radius:50px;
+    border-radius: 50px;
 
-    background:#B17835;
+    background: #B17835;
 
-    color:#fff;
+    color: #fff;
 
-    font-weight:600;
+    font-weight: 600;
 
-    font-size:16px;
+    font-size: 16px;
 
-    transition:.3s;
+    transition: .3s;
 
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
 
 }
 
 button:hover,
-.venue-button:hover{
+.venue-button:hover {
 
-    background:#98692C;
+    background: #98692C;
 
-    transform:translateY(-2px);
+    transform: translateY(-2px);
 
 }
 
@@ -300,41 +328,41 @@ button:hover,
    COUNTDOWN COMMON
 ========================================================== */
 
-.count-item{
+.count-item {
 
-    text-align:center;
+    text-align: center;
 
-    color:#7B2D26;
-
-}
-
-.count-item span{
-
-    display:block;
-
-    font-family:'Cinzel',serif;
-
-    font-size:2.7rem;
-
-    font-weight:600;
-
-    animation:fadeUp .5s ease;
+    color: #7B2D26;
 
 }
 
-.count-item small{
+.count-item span {
 
-    display:block;
+    display: block;
 
-    margin-top:5px;
+    font-family: 'Cinzel', serif;
 
-    font-size:.75rem;
+    font-size: 2.7rem;
 
-    letter-spacing:1px;
+    font-weight: 600;
 
-    text-transform:uppercase;
+    animation: fadeUp .5s ease;
 
-    color:#555;
+}
+
+.count-item small {
+
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: .75rem;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #555;
 
 }
 
@@ -346,49 +374,61 @@ button:hover,
    against the artwork (all four bars share the same y-band).
 ========================================================== */
 
-#functionsPage{
+#functionsPage {
 
-    position:relative;
-
-}
-
-#functionsPage .fn-location-link{
-
-    position:absolute;
-
-    top:83.6%;
-
-    bottom:7.85%;
-
-    display:block;
-
-    cursor:pointer;
+    position: relative;
 
 }
 
-#functionsPage .fn-location-link:focus-visible{
+#functionsPage .fn-location-link {
 
-    outline:2px solid #fff;
+    position: absolute;
 
-    outline-offset:-2px;
+    top: 83.6%;
+
+    bottom: 7.85%;
+
+    display: block;
+
+    cursor: pointer;
 
 }
 
-#loc-mehendi{ left:4.5%;  right:75.5%; }
+#functionsPage .fn-location-link:focus-visible {
 
-#loc-nalugu{  left:28.5%; right:52.0%; }
+    outline: 2px solid #fff;
 
-#loc-haldi{   left:52.0%; right:28.5%; }
+    outline-offset: -2px;
 
-#loc-sangeet{ left:75.5%; right:4.5%;  }
+}
+
+#loc-mehendi {
+    left: 4.5%;
+    right: 75.5%;
+}
+
+#loc-nalugu {
+    left: 28.5%;
+    right: 52.0%;
+}
+
+#loc-haldi {
+    left: 52.0%;
+    right: 28.5%;
+}
+
+#loc-sangeet {
+    left: 75.5%;
+    right: 4.5%;
+}
 
 /* ==========================================================
    VENUE PAGE
 ========================================================== */
 
-#venuePage{
+#venuePage {
 
-    position:relative;
+    position: relative;
 
 }
 
@@ -397,59 +437,59 @@ button:hover,
    button centered under it, above the stone-path artwork
    that starts near the bottom of the image. */
 
-#venuePage .venue-overlay{
+#venuePage .venue-overlay {
 
-    position:absolute;
+    position: absolute;
 
-    left:14%;
+    left: 14%;
 
-    right:52%;
+    right: 52%;
 
-    top:75%;
+    top: 75%;
 
-    bottom:11%;
+    bottom: 11%;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
 }
 
 /* View Location button */
 
-#venuePage .venue-button{
+#venuePage .venue-button {
 
-    width:clamp(90px,15vw,230px);
+    width: clamp(90px, 15vw, 230px);
 
-    height:clamp(12px,4.3vw,46px);
+    height: clamp(12px, 4.3vw, 46px);
 
-    background:#B17835;
+    background: #B17835;
 
-    color:#fff;
+    color: #fff;
 
-    font-size:clamp(6px,1.4vw,15px);
+    font-size: clamp(6px, 1.4vw, 15px);
 
-    font-weight:600;
+    font-weight: 600;
 
-    border-radius:50px;
+    border-radius: 50px;
 
-    text-decoration:none;
+    text-decoration: none;
 
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
 
-    transition:.3s;
+    transition: .3s;
 
-    white-space:nowrap;
+    white-space: nowrap;
 
 }
 
-#venuePage .venue-button:hover{
+#venuePage .venue-button:hover {
 
-    background:#98692C;
+    background: #98692C;
 
-    transform:translateY(-2px);
+    transform: translateY(-2px);
 
 }
 
@@ -464,9 +504,9 @@ button:hover,
    and the overlays can never drift from the printed boxes.
 ========================================================== */
 
-#finalPage{
+#finalPage {
 
-    position:relative;
+    position: relative;
 
 }
 
@@ -476,75 +516,75 @@ button:hover,
    right 84.5%, top 20.1%, bottom 38.4% of the artwork.
 ========================================================== */
 
-#finalPage .countdown-overlay{
+#finalPage .countdown-overlay {
 
-    position:absolute;
+    position: absolute;
 
-    left:16.2%;
+    left: 16.2%;
 
-    right:15.5%;
+    right: 15.5%;
 
-    top:20.1%;
+    top: 20.1%;
 
-    bottom:61.6%;
+    bottom: 61.6%;
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    align-items: center;
 
-    justify-content:center;
+    justify-content: center;
 
 }
 
 /* Countdown Container */
 
-#finalPage .countdown-box{
+#finalPage .countdown-box {
 
-    width:100%;
+    width: 100%;
 
-    height:100%;
+    height: 100%;
 
-    display:grid;
+    display: grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 
-    align-items:center;
+    align-items: center;
 
-    text-align:center;
+    text-align: center;
 
 }
 
 /* Numbers */
 
-#finalPage .count-item span{
+#finalPage .count-item span {
 
-    font-family:'Cinzel',serif;
+    font-family: 'Cinzel', serif;
 
-    font-size:clamp(1.05rem,4.2vw,2.7rem);
+    font-size: clamp(1.05rem, 4.2vw, 2.7rem);
 
-    font-weight:600;
+    font-weight: 600;
 
-    color:#7B2D26;
+    color: #7B2D26;
 
-    line-height:1;
+    line-height: 1;
 
 }
 
 /* Labels */
 
-#finalPage .count-item small{
+#finalPage .count-item small {
 
-    display:block;
+    display: block;
 
-    margin-top:clamp(2px,0.6vw,6px);
+    margin-top: clamp(2px, 0.6vw, 6px);
 
-    font-size:clamp(.45rem,1.1vw,.72rem);
+    font-size: clamp(.45rem, 1.1vw, .72rem);
 
-    letter-spacing:1px;
+    letter-spacing: 1px;
 
-    text-transform:uppercase;
+    text-transform: uppercase;
 
-    color:#555;
+    color: #555;
 
 }
 
@@ -556,107 +596,107 @@ button:hover,
    clear space between that text and the footer artwork.
 ========================================================== */
 
-#finalPage .rsvp-overlay{
+#finalPage .rsvp-overlay {
 
-    position:absolute;
+    position: absolute;
 
-    left:58%;
+    left: 58%;
 
-    right:19%;
+    right: 19%;
 
-    top:67%;
+    top: 67%;
 
-    bottom:5%;
+    bottom: 5%;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:flex-start;
+    align-items: flex-start;
 
 }
 
 /* RSVP Button Container */
 
-#finalPage .rsvp-buttons{
+#finalPage .rsvp-buttons {
 
-    display:flex;
+    display: flex;
 
-    flex-direction:column;
+    flex-direction: column;
 
-    align-items:center;
+    align-items: center;
 
-    width:100%;
+    width: 100%;
 
 }
 
 /* Buttons — side by side, directly under the "Kindly RSVP" line */
 
-#finalPage .rsvp-buttons .rsvp-btn-row{
+#finalPage .rsvp-buttons .rsvp-btn-row {
 
-    display:flex;
+    display: flex;
 
-    flex-direction:row;
+    flex-direction: row;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    gap:clamp(4px,1.6vw,12px);
+    gap: clamp(4px, 1.6vw, 12px);
 
-    width:100%;
+    width: 100%;
 
 }
 
-#finalPage .rsvp-buttons button{
+#finalPage .rsvp-buttons button {
 
-    width:clamp(32px,9vw,90px);
+    width: clamp(32px, 9vw, 90px);
 
-    height:clamp(16px,5vw,40px);
+    height: clamp(16px, 5vw, 40px);
 
-    border:none;
+    border: none;
 
-    border-radius:50px;
+    border-radius: 50px;
 
-    background:#B17835;
+    background: #B17835;
 
-    color:#fff;
+    color: #fff;
 
-    font-size:clamp(7px,1.8vw,14px);
+    font-size: clamp(7px, 1.8vw, 14px);
 
-    font-weight:600;
+    font-weight: 600;
 
-    line-height:1.1;
+    line-height: 1.1;
 
-    padding:0 clamp(2px,0.8vw,6px);
+    padding: 0 clamp(2px, 0.8vw, 6px);
 
-    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
 
-    transition:all .3s ease;
+    transition: all .3s ease;
 
-    white-space:nowrap;
+    white-space: nowrap;
 
-    overflow:hidden;
+    overflow: hidden;
 
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
 
 }
 
 /* Hover */
 
-#finalPage .rsvp-buttons button:hover{
+#finalPage .rsvp-buttons button:hover {
 
-    background:#98692C;
+    background: #98692C;
 
-    transform:translateY(-3px);
+    transform: translateY(-3px);
 
 }
 
 /* Active */
 
-#finalPage .rsvp-buttons button:active{
+#finalPage .rsvp-buttons button:active {
 
-    transform:scale(.98);
+    transform: scale(.98);
 
 }
 
@@ -664,78 +704,78 @@ button:hover,
    RSVP POPUP
 ========================================================== */
 
-.popup{
+.popup {
 
-    position:fixed;
+    position: fixed;
 
-    inset:0;
+    inset: 0;
 
-    display:flex;
+    display: flex;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    background:rgba(0,0,0,.55);
+    background: rgba(0, 0, 0, .55);
 
-    opacity:0;
+    opacity: 0;
 
-    visibility:hidden;
+    visibility: hidden;
 
-    transition:opacity .35s ease,
-               visibility .35s ease;
+    transition: opacity .35s ease,
+        visibility .35s ease;
 
-    z-index:99999;
+    z-index: 99999;
 
 }
 
-.popup.show{
+.popup.show {
 
-    opacity:1;
+    opacity: 1;
 
-    visibility:visible;
+    visibility: visible;
 
 }
 
 /* Popup Card */
 
-.popup-card{
+.popup-card {
 
-    position:relative;
+    position: relative;
 
-    width:min(90%,500px);
+    width: min(90%, 500px);
 
-    background:#FFFDF9;
+    background: #FFFDF9;
 
-    border-radius:24px;
+    border-radius: 24px;
 
-    padding:40px 30px;
+    padding: 40px 30px;
 
-    text-align:center;
+    text-align: center;
 
-    box-shadow:0 20px 45px rgba(0,0,0,.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, .25);
 
-    animation:popupScale .35s ease;
+    animation: popupScale .35s ease;
 
 }
 
 /* Popup Animation */
 
-@keyframes popupScale{
+@keyframes popupScale {
 
-    from{
+    from {
 
-        opacity:0;
+        opacity: 0;
 
-        transform:scale(.9);
+        transform: scale(.9);
 
     }
 
-    to{
+    to {
 
-        opacity:1;
+        opacity: 1;
 
-        transform:scale(1);
+        transform: scale(1);
 
     }
 
@@ -743,53 +783,53 @@ button:hover,
 
 /* Title */
 
-.popup-card h2{
+.popup-card h2 {
 
-    font-family:'Cinzel',serif;
+    font-family: 'Cinzel', serif;
 
-    color:#8D2E24;
+    color: #8D2E24;
 
-    font-size:2rem;
+    font-size: 2rem;
 
-    margin-bottom:18px;
+    margin-bottom: 18px;
 
 }
 
 /* Message */
 
-.popup-card p{
+.popup-card p {
 
-    color:#555;
+    color: #555;
 
-    line-height:1.8;
+    line-height: 1.8;
 
-    font-size:1rem;
+    font-size: 1rem;
 
 }
 
 /* Close Button */
 
-#closePopup{
+#closePopup {
 
-    position:absolute;
+    position: absolute;
 
-    top:14px;
+    top: 14px;
 
-    right:18px;
+    right: 18px;
 
-    font-size:2rem;
+    font-size: 2rem;
 
-    color:#999;
+    color: #999;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    transition:.3s;
+    transition: .3s;
 
 }
 
-#closePopup:hover{
+#closePopup:hover {
 
-    color:#8D2E24;
+    color: #8D2E24;
 
 }
 
@@ -797,25 +837,25 @@ button:hover,
    MOBILE
 ========================================================== */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .popup-card{
+    .popup-card {
 
-        width:92%;
+        width: 92%;
 
-        padding:32px 24px;
-
-    }
-
-    .popup-card h2{
-
-        font-size:1.6rem;
+        padding: 32px 24px;
 
     }
 
-    .popup-card p{
+    .popup-card h2 {
 
-        font-size:.95rem;
+        font-size: 1.6rem;
+
+    }
+
+    .popup-card p {
+
+        font-size: .95rem;
 
     }
 
@@ -825,55 +865,55 @@ button:hover,
    BACK TO TOP BUTTON
 ========================================================== */
 
-#topButton{
+#topButton {
 
-    position:fixed;
+    position: fixed;
 
-    right:20px;
+    right: 20px;
 
-    bottom:20px;
+    bottom: 20px;
 
-    width:52px;
+    width: 52px;
 
-    height:52px;
+    height: 52px;
 
-    border:none;
+    border: none;
 
-    border-radius:50%;
+    border-radius: 50%;
 
-    background:#B17835;
+    background: #B17835;
 
-    color:#fff;
+    color: #fff;
 
-    font-size:22px;
+    font-size: 22px;
 
-    display:none;
+    display: none;
 
-    justify-content:center;
+    justify-content: center;
 
-    align-items:center;
+    align-items: center;
 
-    cursor:pointer;
+    cursor: pointer;
 
-    box-shadow:0 10px 22px rgba(0,0,0,.20);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, .20);
 
-    transition:all .3s ease;
+    transition: all .3s ease;
 
-    z-index:999;
-
-}
-
-#topButton:hover{
-
-    background:#98692C;
-
-    transform:translateY(-4px);
+    z-index: 999;
 
 }
 
-#topButton.show{
+#topButton:hover {
 
-    display:flex;
+    background: #98692C;
+
+    transform: translateY(-4px);
+
+}
+
+#topButton.show {
+
+    display: flex;
 
 }
 
@@ -881,19 +921,19 @@ button:hover,
    MOBILE
 ========================================================== */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    #topButton{
+    #topButton {
 
-        width:46px;
+        width: 46px;
 
-        height:46px;
+        height: 46px;
 
-        right:15px;
+        right: 15px;
 
-        bottom:15px;
+        bottom: 15px;
 
-        font-size:20px;
+        font-size: 20px;
 
     }
 
@@ -905,11 +945,11 @@ button:hover,
 
 /* Large Desktop */
 
-@media (min-width:1600px){
+@media (min-width:1600px) {
 
-    .page-wrapper{
+    .page-wrapper {
 
-        max-width:1600px;
+        max-width: 1600px;
 
     }
 
@@ -917,11 +957,11 @@ button:hover,
 
 /* Tablet */
 
-@media (max-width:1024px){
+@media (max-width:1024px) {
 
-    .page-wrapper{
+    .page-wrapper {
 
-        width:100%;
+        width: 100%;
 
     }
 
@@ -929,19 +969,19 @@ button:hover,
 
 /* Mobile */
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .loader-content h1{
+    .loader-content h1 {
 
-        font-size:32px;
+        font-size: 32px;
 
     }
 
-    .loader-content p{
+    .loader-content p {
 
-        font-size:15px;
+        font-size: 15px;
 
-        line-height:1.7;
+        line-height: 1.7;
 
     }
 
@@ -949,29 +989,29 @@ button:hover,
 
 /* Small Phones */
 
-@media (max-width:480px){
+@media (max-width:480px) {
 
-    .loader-content{
+    .loader-content {
 
-        padding:24px;
-
-    }
-
-    .loader-content h1{
-
-        font-size:28px;
+        padding: 24px;
 
     }
 
-    .loader-content p{
+    .loader-content h1 {
 
-        font-size:14px;
+        font-size: 28px;
 
     }
 
-    .flower{
+    .loader-content p {
 
-        font-size:56px;
+        font-size: 14px;
+
+    }
+
+    .flower {
+
+        font-size: 56px;
 
     }
 
@@ -980,18 +1020,18 @@ button:hover,
 /* Prevent horizontal scrolling */
 
 html,
-body{
+body {
 
-    overflow-x:hidden;
+    overflow-x: hidden;
 
 }
 
 /* Improve tap experience */
 
 button,
-.venue-button{
+.venue-button {
 
-    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: transparent;
 
 }
 
@@ -1000,11 +1040,12 @@ button,
 button,
 .venue-button,
 .popup-card,
-#topButton{
+#topButton {
 
-    transition:all .3s ease;
+    transition: all .3s ease;
 
 }
+
 /* ==========================================================
    DYNAMIC UPGRADE — added on top of the original design
    (progress bar, dot nav, scroll reveal, RSVP status)
@@ -1012,85 +1053,86 @@ button,
 
 /* ---------------- Scroll progress bar ---------------- */
 
-#progressBar{
+#progressBar {
 
-    position:fixed;
-    top:0;
-    left:0;
-    height:4px;
-    width:0%;
-    background:linear-gradient(90deg,#B17835,#7B2D26);
-    z-index:100000;
-    transition:width .1s linear;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: linear-gradient(90deg, #B17835, #7B2D26);
+    z-index: 100000;
+    transition: width .1s linear;
 
 }
 
 /* ---------------- Section dot navigation ---------------- */
 
-#dotNav{
+#dotNav {
 
-    position:fixed;
-    right:18px;
-    top:50%;
-    transform:translateY(-50%);
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    z-index:9000;
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 9000;
 
 }
 
-#dotNav .dot{
+#dotNav .dot {
 
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    background:rgba(177,120,53,.28);
-    display:block;
-    position:relative;
-    transition:.3s;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(177, 120, 53, .28);
+    display: block;
+    position: relative;
+    transition: .3s;
 
 }
 
 #dotNav .dot:hover,
-#dotNav .dot.active{
+#dotNav .dot.active {
 
-    background:#B17835;
-    transform:scale(1.25);
-
-}
-
-#dotNav .dot span{
-
-    position:absolute;
-    right:20px;
-    top:50%;
-    transform:translateY(-50%);
-    white-space:nowrap;
-    font-size:11px;
-    letter-spacing:.5px;
-    color:#7B2D26;
-    background:#FFFDF9;
-    padding:3px 10px;
-    border-radius:20px;
-    opacity:0;
-    pointer-events:none;
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
-    transition:opacity .25s ease;
+    background: #B17835;
+    transform: scale(1.25);
 
 }
 
-#dotNav .dot:hover span{
+#dotNav .dot span {
 
-    opacity:1;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 11px;
+    letter-spacing: .5px;
+    color: #7B2D26;
+    background: #FFFDF9;
+    padding: 3px 10px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+    transition: opacity .25s ease;
 
 }
 
-@media (max-width:768px){
+#dotNav .dot:hover span {
 
-    #dotNav{
+    opacity: 1;
 
-        display:none; /* keep mobile screens uncluttered; back-to-top + scroll still work */
+}
+
+@media (max-width:768px) {
+
+    #dotNav {
+
+        display: none;
+        /* keep mobile screens uncluttered; back-to-top + scroll still work */
 
     }
 
@@ -1098,47 +1140,48 @@ button,
 
 /* ---------------- Scroll reveal ---------------- */
 
-.page.reveal .page-wrapper{
+.page.reveal .page-wrapper {
 
-    opacity:0;
-    transform:translateY(50px);
-    animation:none; /* override the original load-only fadeUp; JS toggles .in-view instead */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: none;
+    /* override the original load-only fadeUp; JS toggles .in-view instead */
 
 }
 
-.page.reveal.in-view .page-wrapper{
+.page.reveal.in-view .page-wrapper {
 
-    animation:fadeUp .9s cubic-bezier(.22,1,.36,1) both;
+    animation: fadeUp .9s cubic-bezier(.22, 1, .36, 1) both;
 
 }
 
 /* First section should still be visible immediately, even before JS/IntersectionObserver runs */
 
-.page:first-of-type .page-wrapper{
+.page:first-of-type .page-wrapper {
 
-    opacity:1;
-    transform:none;
-    animation:fadeUp .8s ease both;
+    opacity: 1;
+    transform: none;
+    animation: fadeUp .8s ease both;
 
 }
 
 /* ---------------- RSVP status line ---------------- */
 
-.rsvp-status{
+.rsvp-status {
 
-    margin-top:clamp(2px,1.5vw,10px);
-    font-size:clamp(6px,2vw,14px);
-    font-style:italic;
-    color:#7B2D26;
-    text-shadow:none;
-    min-height:1em;
-    text-align:center;
+    margin-top: clamp(2px, 1.5vw, 10px);
+    font-size: clamp(6px, 2vw, 14px);
+    font-style: italic;
+    color: #7B2D26;
+    text-shadow: none;
+    min-height: 1em;
+    text-align: center;
 
 }
 
-#finalPage .rsvp-buttons button.selected{
+#finalPage .rsvp-buttons button.selected {
 
-    background:#7B2D26;
-    box-shadow:0 0 0 3px rgba(255,255,255,.55) inset;
+    background: #7B2D26;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .55) inset;
 
 }
