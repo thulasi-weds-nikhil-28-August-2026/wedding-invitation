@@ -3,16 +3,45 @@
 ========================================== */
 
 window.addEventListener("load", () => {
-
     const loader = document.getElementById("loader");
+    const openBtn = document.getElementById("openInvBtn");
+    const spinner = document.querySelector(".loading-spinner");
+    const audio = document.getElementById("bg-music");
 
-    setTimeout(() => {
+    if (spinner) spinner.style.display = "none";
 
-        loader.style.opacity = "0";
-        loader.style.visibility = "hidden";
+    if (openBtn) {
+        openBtn.style.display = "inline-block";
+        openBtn.addEventListener("click", () => {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+            if (audio) {
+                audio.volume = 0.6;
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        audio.currentTime = 22; // Skip to 0:22 after it starts
+                    }).catch(e => console.log("Audio play failed:", e));
+                } else {
+                    audio.currentTime = 22;
+                }
 
-    }, 1800);
-
+                // Loop custom duration: 0:22 to 1:40 (100 seconds)
+                audio.addEventListener("timeupdate", () => {
+                    if (audio.currentTime >= 100) {
+                        audio.currentTime = 22;
+                        audio.play();
+                    }
+                });
+            }
+        });
+    } else {
+        setTimeout(() => {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
+        }, 1800);
+    }
 });
 
 
@@ -100,7 +129,7 @@ function paintRsvpState(response) {
 
         rsvpStatus.textContent =
             response === "yes" ? "You're on the list — see you there! 💛" :
-            response === "no"  ? "Thanks for letting us know 🙏" : "";
+                response === "no" ? "Thanks for letting us know 🙏" : "";
 
     }
 
@@ -113,6 +142,8 @@ yesBtn.onclick = () => {
 
     localStorage.setItem(RSVP_KEY, "yes");
     paintRsvpState("yes");
+    
+    window.location.href = "mailto:tulu.reddy1995@gmail.com?subject=RSVP%20Yes:%20Attending%20Tulasi%20and%20Nikhil's%20Wedding!&body=Hi%20Tulasi%20and%20Nikhil,%0A%0AI%20am%20excited%20to%20let%20you%20know%20that%20I%20will%20be%20attending%20your%20wedding!%0A%0APlease%20accept%20my%20RSVP.%0A%0ABest%20regards,%0A[Your Name Here]";
 
     popup.classList.add("show");
 
@@ -133,6 +164,8 @@ noBtn.onclick = () => {
 
     localStorage.setItem(RSVP_KEY, "no");
     paintRsvpState("no");
+    
+    window.location.href = "mailto:tulu.reddy1995@gmail.com?subject=RSVP%20No:%20Cannot%20Attend%20Tulasi%20and%20Nikhil's%20Wedding&body=Hi%20Tulasi%20and%20Nikhil,%0A%0AUnfortunately,%20I%20will%20not%20be%20able%20to%20attend%20the%20wedding.%20Wishing%20you%20both%20a%20lifetime%20of%20happiness!%0A%0ABest%20regards,%0A[Your Name Here]";
 
     popup.classList.add("show");
 

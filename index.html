@@ -17,9 +17,11 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 
 </head>
 
@@ -39,8 +41,10 @@
         <a href="#section-hero" class="dot active" data-target="section-hero" aria-label="Welcome"><span></span></a>
         <a href="#section-ganesha" class="dot" data-target="section-ganesha" aria-label="Ganesha"><span></span></a>
         <a href="#section-story" class="dot" data-target="section-story" aria-label="Our Story"><span></span></a>
-        <a href="#section-functions" class="dot" data-target="section-functions" aria-label="Functions"><span></span></a>
-        <a href="#section-wedding-day" class="dot" data-target="section-wedding-day" aria-label="Wedding Day"><span></span></a>
+        <a href="#section-functions" class="dot" data-target="section-functions"
+            aria-label="Functions"><span></span></a>
+        <a href="#section-wedding-day" class="dot" data-target="section-wedding-day"
+            aria-label="Wedding Day"><span></span></a>
         <a href="#section-venue" class="dot" data-target="section-venue" aria-label="Venue"><span></span></a>
         <a href="#section-final" class="dot" data-target="section-final" aria-label="RSVP"><span></span></a>
     </nav>
@@ -64,6 +68,11 @@
 
             <div class="loading-spinner"></div>
 
+            <button id="openInvBtn"
+                style="display: none; padding: 12px 30px; font-size: 1.2rem; margin-top: 25px; cursor: pointer; font-family: 'Cinzel', serif; background: #7B2D26; color: #FFFDF9; border: none; border-radius: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s ease;">Open
+                Invitation</button>
+            <audio id="bg-music" src="videoplayback.mp3" preload="auto"></audio>
+
         </div>
 
     </div>
@@ -77,8 +86,8 @@
         <!-- HERO -->
 
         <section class="page reveal" id="section-hero">
-            <div class="page-wrapper">
-                <img src="images/hero.png" alt="Wedding Invitation">
+            <div class="page-wrapper" id="heroPage">
+                <video src="hero.mp4" autoplay loop muted playsinline alt="Wedding Invitation"></video>
             </div>
         </section>
 
@@ -103,15 +112,21 @@
         <section class="page reveal" id="section-functions">
             <div class="page-wrapper" id="functionsPage">
 
-                <img src="images/functions.png" alt="Wedding Functions" loading="lazy">
+                <video src="Animate_this_entire_wedding_in (2).mp4" autoplay loop muted playsinline
+                    alt="Wedding Functions"></video>
 
-                <a class="fn-location-link" id="loc-mehendi" href="https://www.google.com/maps/search/?api=1&query=14.411417,79.972417" target="_blank" rel="noopener" aria-label="Mehendi location, Nellore — open in Maps"></a>
+                <a class="fn-location-link" id="loc-mehendi"
+                    href="https://www.google.com/maps/search/?api=1&query=14.411417,79.972417" target="_blank"
+                    rel="noopener" aria-label="Mehendi location, Nellore — open in Maps"></a>
 
-                <a class="fn-location-link" id="loc-nalugu" href="https://maps.app.goo.gl/SpaqmqtCK8bdGTqH6" target="_blank" rel="noopener" aria-label="Nalugu location, Nellore — open in Maps"></a>
+                <a class="fn-location-link" id="loc-nalugu" href="https://maps.app.goo.gl/SpaqmqtCK8bdGTqH6"
+                    target="_blank" rel="noopener" aria-label="Nalugu location, Nellore — open in Maps"></a>
 
-                <a class="fn-location-link" id="loc-haldi" href="https://www.google.com/maps/search/?api=1&query=17.630583,80.807861" target="_blank" rel="noopener" aria-label="Haldi location, Bhadrachalam — open in Maps"></a>
+                <a class="fn-location-link" id="loc-haldi" href="https://share.google/drORNzEO7gZUbiPwt" target="_blank"
+                    rel="noopener" aria-label="Haldi location, Bhadrachalam — open in Maps"></a>
 
-                <a class="fn-location-link" id="loc-sangeet" href="https://www.google.com/maps/search/?api=1&query=17.630583,80.807861" target="_blank" rel="noopener" aria-label="Sangeet location, Bhadrachalam — open in Maps"></a>
+                <a class="fn-location-link" id="loc-sangeet" href="https://share.google/drORNzEO7gZUbiPwt"
+                    target="_blank" rel="noopener" aria-label="Sangeet location, Bhadrachalam — open in Maps"></a>
 
             </div>
         </section>
@@ -134,7 +149,9 @@
 
                 <div class="venue-overlay">
 
-                    <a class="venue-button" href="https://www.google.com/maps/search/?api=1&query=Suguna+Gardens,+Palwancha,+Telangana" target="_blank">
+                    <a class="venue-button"
+                        href="https://www.google.com/maps/search/?api=1&query=Suguna+Gardens,+Palwancha,+Telangana"
+                        target="_blank">
                         View Location
                     </a>
 
@@ -232,7 +249,7 @@
 
     <button id="topButton">↑</button>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=8"></script>
 
 </body>
 
