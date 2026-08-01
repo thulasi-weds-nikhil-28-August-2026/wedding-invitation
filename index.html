@@ -21,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=8">
 
 </head>
 
@@ -61,7 +61,37 @@
             <div class="door door-right"></div>
             <div class="door-seam"></div>
 
-            <div class="tap-hint" id="tapHint">Tap anywhere to open</div>
+            <div class="parrots" id="parrots" aria-hidden="true">
+                <svg class="parrot parrot-1" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M10 35 Q35 5 60 20 Q75 8 95 12 Q80 22 75 32 Q95 30 110 40 Q90 42 78 38 Q85 50 80 60 Q68 45 58 40 Q35 50 10 35 Z" fill="#2FA84F"/>
+                        <path d="M58 40 Q35 50 10 35 Q35 42 58 34 Z" fill="#1E7A38"/>
+                        <circle cx="70" cy="24" r="3" fill="#12331A"/>
+                        <path d="M95 12 Q108 14 112 20 Q100 20 93 18 Z" fill="#E8462B"/>
+                    </g>
+                </svg>
+                <svg class="parrot parrot-2" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M10 35 Q35 5 60 20 Q75 8 95 12 Q80 22 75 32 Q95 30 110 40 Q90 42 78 38 Q85 50 80 60 Q68 45 58 40 Q35 50 10 35 Z" fill="#F2C230"/>
+                        <path d="M58 40 Q35 50 10 35 Q35 42 58 34 Z" fill="#D99A1B"/>
+                        <circle cx="70" cy="24" r="3" fill="#12331A"/>
+                        <path d="M95 12 Q108 14 112 20 Q100 20 93 18 Z" fill="#E8462B"/>
+                    </g>
+                </svg>
+                <svg class="parrot parrot-3" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <path d="M10 35 Q35 5 60 20 Q75 8 95 12 Q80 22 75 32 Q95 30 110 40 Q90 42 78 38 Q85 50 80 60 Q68 45 58 40 Q35 50 10 35 Z" fill="#2FA84F"/>
+                        <path d="M58 40 Q35 50 10 35 Q35 42 58 34 Z" fill="#1E7A38"/>
+                        <circle cx="70" cy="24" r="3" fill="#12331A"/>
+                        <path d="M95 12 Q108 14 112 20 Q100 20 93 18 Z" fill="#E8462B"/>
+                    </g>
+                </svg>
+            </div>
+
+            <button type="button" class="open-btn" id="openBtn" aria-label="Open Invitation">
+                <span class="open-circle"><span class="heart">&#10084;</span></span>
+                <span class="open-label">Open Invitation</span>
+            </button>
 
         </div>
 
@@ -241,7 +271,7 @@
 
     <button id="topButton">↑</button>
 
-    <script src="script.js?v=10"></script>
+    <script src="script.js?v=12"></script>
 
 </body>
 

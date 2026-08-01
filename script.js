@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
     const doorScene = document.getElementById("doorScene");
     const audio = document.getElementById("bg-music");
 
-    const DOOR_ANIM_MS = 1250; // must match .door transition duration in style.css
+    const DOOR_ANIM_MS = 3000; // must match the door/loader transition duration in style.css
 
     let opened = false;
 
@@ -15,8 +15,12 @@ window.addEventListener("load", () => {
         if (opened) return;
         opened = true;
 
-        // Swing/slide the two door halves apart (image splits left/right)
+        // Swing the two door halves open on their inward hinge, and start
+        // fading the whole cover out at the same moment, so the real
+        // invitation is revealed gradually underneath over 3 seconds
+        // instead of popping in the instant the doors finish.
         if (doorScene) doorScene.classList.add("opening");
+        if (loader) loader.style.opacity = "0";
 
         if (audio) {
             audio.volume = 0.6;
@@ -39,16 +43,18 @@ window.addEventListener("load", () => {
             });
         }
 
-        // Once the doors have finished swinging open, remove the cover
+        // Once the 3s open/fade sequence has fully finished, remove the
+        // cover from the layout so it can't block clicks on the page.
         setTimeout(() => {
-            loader.style.opacity = "0";
             loader.style.visibility = "hidden";
+            loader.style.pointerEvents = "none";
         }, DOOR_ANIM_MS);
     }
 
-    // Clicking/tapping anywhere on the invitation cover opens it
-    if (doorScene) {
-        doorScene.addEventListener("click", openInvitation);
+    // Only clicking/tapping the heart button opens the invitation
+    const openBtn = document.getElementById("openBtn");
+    if (openBtn) {
+        openBtn.addEventListener("click", openInvitation);
     }
 });
 

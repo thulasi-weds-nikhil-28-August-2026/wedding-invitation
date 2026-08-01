@@ -112,8 +112,8 @@ a {
 
     z-index: 99999;
 
-    transition: opacity .8s ease,
-        visibility .8s ease;
+    transition: opacity 3s ease,
+        visibility 3s ease;
 
 }
 
@@ -127,7 +127,6 @@ a {
     inset: 0;
     perspective: 2400px;
     overflow: hidden;
-    cursor: pointer;
 
 }
 
@@ -141,9 +140,10 @@ a {
     background-repeat: no-repeat;
     background-size: 200% 100%;
     transform-style: preserve-3d;
-    transition: transform 1.25s cubic-bezier(.76, 0, .24, 1),
-        box-shadow 1.25s ease;
-    will-change: transform;
+    transition: transform 3s cubic-bezier(.65, 0, .35, 1),
+        opacity 3s ease,
+        box-shadow 3s ease;
+    will-change: transform, opacity;
 
 }
 
@@ -151,7 +151,7 @@ a {
 
     left: 0;
     background-position: left center;
-    transform-origin: left center;
+    transform-origin: right center;
     box-shadow: inset -35px 0 45px -22px rgba(0, 0, 0, .5);
 
 }
@@ -160,7 +160,7 @@ a {
 
     right: 0;
     background-position: right center;
-    transform-origin: right center;
+    transform-origin: left center;
     box-shadow: inset 35px 0 45px -22px rgba(0, 0, 0, .5);
 
 }
@@ -184,13 +184,15 @@ a {
 
 .door-scene.opening .door-left {
 
-    transform: rotateY(-112deg);
+    transform: rotateY(-108deg);
+    opacity: 0;
 
 }
 
 .door-scene.opening .door-right {
 
-    transform: rotateY(112deg);
+    transform: rotateY(108deg);
+    opacity: 0;
 
 }
 
@@ -200,29 +202,214 @@ a {
 
 }
 
-.tap-hint {
+.open-btn {
 
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 6%;
+    bottom: 8%;
     z-index: 4;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    cursor: pointer;
+    animation: fadeUp .8s ease .3s both;
+
+}
+
+/* The generic "button, .venue-button" + "button:hover" rules further down
+   this file are more specific than a bare .open-btn rule (element+:hover
+   beats a single class), so without this override, hovering the heart
+   button reveals the brown button background/shadow stretched across the
+   full-width invisible button box (left:0; right:0 above) — it looks like
+   a broad brown bar across the section. Re-assert "no button chrome" at
+   equal-or-higher specificity for every interaction state. */
+.open-btn,
+.open-btn:hover,
+.open-btn:focus,
+.open-btn:focus-visible,
+.open-btn:active {
+
+    background: none;
+    box-shadow: none;
+    transform: none;
+
+}
+
+.open-circle {
+
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 253, 249, .16);
+    border: 1.5px solid rgba(255, 253, 249, .85);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+    animation: pulseHint 2.4s ease-in-out 1s infinite;
+
+}
+
+.heart {
+
+    display: inline-block;
+    color: #E8462B;
+    font-size: 24px;
+    line-height: 1;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, .4);
+    animation: heartbeat 1.15s ease-in-out infinite;
+    transform-origin: center;
+
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.28);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.22);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+}
+
+/* Stop the heartbeat once the invitation is opening/opened */
+.door-scene.opening .heart {
+
+    animation: none;
+
+}
+
+.open-label {
+
     font-family: 'Cinzel', serif;
     font-size: 13px;
+    font-weight: 700;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: #FFFDF9;
     text-shadow: 0 1px 6px rgba(0, 0, 0, .6);
-    pointer-events: none;
-    animation: fadeUp .8s ease .3s both, pulseHint 2.4s ease-in-out 1s infinite;
 
 }
 
-.door-scene.opening .tap-hint {
+.door-scene.opening .open-btn {
 
     opacity: 0;
     transition: opacity .35s ease;
+    pointer-events: none;
+
+}
+
+/* ==========================================================
+   FLYING PARROTS (play once, on door open)
+========================================================== */
+
+.parrots {
+
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+
+}
+
+.parrot {
+
+    position: absolute;
+    width: 90px;
+    height: auto;
+    opacity: 0;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .3));
+}
+
+.door-scene.opening .parrot-1 {
+
+    top: 22%;
+    left: -15%;
+    animation: flyRight 1.6s ease-out .05s forwards;
+
+}
+
+.door-scene.opening .parrot-2 {
+
+    top: 55%;
+    right: -15%;
+    width: 70px;
+    animation: flyLeft 1.7s ease-out .2s forwards;
+
+}
+
+.door-scene.opening .parrot-3 {
+
+    top: 38%;
+    left: -15%;
+    width: 60px;
+    animation: flyRight 1.8s ease-out .35s forwards;
+
+}
+
+@keyframes flyRight {
+
+    0% {
+        transform: translate(0, 0) scale(.9);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(60vw, -8vh) scale(1);
+    }
+
+    100% {
+        transform: translate(130vw, -4vh) scale(1.05);
+        opacity: 0;
+    }
+
+}
+
+@keyframes flyLeft {
+
+    0% {
+        transform: translate(0, 0) scale(.9) scaleX(-1);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-60vw, -6vh) scale(1) scaleX(-1);
+    }
+
+    100% {
+        transform: translate(-130vw, -2vh) scale(1.05) scaleX(-1);
+        opacity: 0;
+    }
 
 }
 
@@ -1004,6 +1191,32 @@ button:hover,
 }
 
 /* ==========================================================
+   LAPTOP / DESKTOP LOADER FRAME
+
+   The cover photo (images/open-invitation.jpg) is a tall portrait
+   image, sized to fill a phone screen edge-to-edge. On a wide
+   laptop screen that same full-bleed treatment crops away most of
+   the photo. From this breakpoint up, frame it as a centered
+   portrait card instead so the invitation "fits" the screen
+   properly rather than being zoomed/cropped.
+========================================================== */
+
+@media (min-width:1025px) {
+
+    .door-scene {
+
+        position: relative;
+        inset: auto;
+        width: min(480px, 88vw);
+        height: min(820px, 88vh);
+        border-radius: 22px;
+        box-shadow: 0 35px 90px rgba(0, 0, 0, .4);
+
+    }
+
+}
+
+/* ==========================================================
    FINAL RESPONSIVE POLISH
 ========================================================== */
 
@@ -1044,10 +1257,17 @@ button:hover,
         object-fit: contain;
     }
 
-    .tap-hint {
+    .open-label {
 
         font-size: 11px;
         letter-spacing: 2px;
+
+    }
+
+    .open-circle {
+
+        width: 50px;
+        height: 50px;
 
     }
 
