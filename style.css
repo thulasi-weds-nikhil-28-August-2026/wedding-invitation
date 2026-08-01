@@ -1083,6 +1083,42 @@ button:hover,
 
 }
 
+/* RSVP form link */
+
+.popup-form-link {
+
+    display: inline-block;
+
+    margin-top: 22px;
+
+    padding: 12px 30px;
+
+    border-radius: 50px;
+
+    background: #B17835;
+
+    color: #fff;
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    text-decoration: none;
+
+    transition: .3s;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
+
+}
+
+.popup-form-link:hover {
+
+    background: #98692C;
+
+    transform: translateY(-2px);
+
+}
+
 /* Close Button */
 
 #closePopup {
@@ -1452,19 +1488,7 @@ button,
 
 }
 
-/* ---------------- RSVP status line ---------------- */
-
-.rsvp-status {
-
-    margin-top: clamp(2px, 1.5vw, 10px);
-    font-size: clamp(6px, 2vw, 14px);
-    font-style: italic;
-    color: #7B2D26;
-    text-shadow: none;
-    min-height: 1em;
-    text-align: center;
-
-}
+/* ---------------- Selected RSVP button ---------------- */
 
 #finalPage .rsvp-buttons button.selected {
 

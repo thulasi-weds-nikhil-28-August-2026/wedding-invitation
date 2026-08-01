@@ -128,24 +128,22 @@ const popupTitle = document.getElementById("popupTitle");
 
 const popupMessage = document.getElementById("popupMessage");
 
+const popupFormLink = document.getElementById("popupFormLink");
+
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const rsvpStatus = document.getElementById("rsvpStatus");
 
 const RSVP_KEY = "thulasiNikhil_rsvp";
+
+const RSVP_FORM_LINKS = {
+    yes: "https://docs.google.com/forms/d/e/1FAIpQLSd4E2-Yh4tkyPr_s6PKD40PYh72-lYspvoJzCmS8yJ-YRmY1A/viewform",
+    no: "https://docs.google.com/forms/d/e/1FAIpQLScB6XvlIVGOSCpIynv8v2nvLDM5fWTp2UU_QByABIExFwMzVg/viewform"
+};
 
 function paintRsvpState(response) {
 
     yesBtn.classList.toggle("selected", response === "yes");
     noBtn.classList.toggle("selected", response === "no");
-
-    if (rsvpStatus) {
-
-        rsvpStatus.textContent =
-            response === "yes" ? "You're on the list — see you there! 💛" :
-                response === "no" ? "Thanks for letting us know 🙏" : "";
-
-    }
 
 }
 
@@ -156,8 +154,6 @@ yesBtn.onclick = () => {
 
     localStorage.setItem(RSVP_KEY, "yes");
     paintRsvpState("yes");
-    
-    window.location.href = "mailto:tulu.reddy1995@gmail.com?subject=RSVP%20Yes:%20Attending%20Tulasi%20and%20Nikhil's%20Wedding!&body=Hi%20Tulasi%20and%20Nikhil,%0A%0AI%20am%20excited%20to%20let%20you%20know%20that%20I%20will%20be%20attending%20your%20wedding!%0A%0APlease%20accept%20my%20RSVP.%0A%0ABest%20regards,%0A[Your Name Here]";
 
     popup.classList.add("show");
 
@@ -172,14 +168,14 @@ yesBtn.onclick = () => {
         See you on <b>28 August 2026</b>.
     `;
 
+    popupFormLink.href = RSVP_FORM_LINKS.yes;
+
 };
 
 noBtn.onclick = () => {
 
     localStorage.setItem(RSVP_KEY, "no");
     paintRsvpState("no");
-    
-    window.location.href = "mailto:tulu.reddy1995@gmail.com?subject=RSVP%20No:%20Cannot%20Attend%20Tulasi%20and%20Nikhil's%20Wedding&body=Hi%20Tulasi%20and%20Nikhil,%0A%0AUnfortunately,%20I%20will%20not%20be%20able%20to%20attend%20the%20wedding.%20Wishing%20you%20both%20a%20lifetime%20of%20happiness!%0A%0ABest%20regards,%0A[Your Name Here]";
 
     popup.classList.add("show");
 
@@ -191,6 +187,8 @@ noBtn.onclick = () => {
         <br><br>
         Thank you for being part of our journey.
     `;
+
+    popupFormLink.href = RSVP_FORM_LINKS.no;
 
 };
 
