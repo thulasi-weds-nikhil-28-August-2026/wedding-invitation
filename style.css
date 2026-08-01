@@ -207,7 +207,7 @@ a {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 8%;
+    bottom: 12%;
     z-index: 4;
     display: flex;
     flex-direction: column;
@@ -243,8 +243,8 @@ a {
 
 .open-circle {
 
-    width: 58px;
-    height: 58px;
+    width: 76px;
+    height: 76px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -260,7 +260,7 @@ a {
 
     display: inline-block;
     color: #E8462B;
-    font-size: 24px;
+    font-size: 36px;
     line-height: 1;
     text-shadow: 0 1px 6px rgba(0, 0, 0, .4);
     animation: heartbeat 1.15s ease-in-out infinite;
@@ -309,6 +309,31 @@ a {
     text-transform: uppercase;
     color: #FFFDF9;
     text-shadow: 0 1px 6px rgba(0, 0, 0, .6);
+    display: inline-block;
+    animation: labelBlink 1.6s ease-in-out infinite;
+    transform-origin: center;
+
+}
+
+@keyframes labelBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .35;
+        transform: scale(1.14);
+    }
+
+}
+
+/* Stop the label blink once the invitation is opening/opened */
+.door-scene.opening .open-label {
+
+    animation: none;
 
 }
 
@@ -1259,15 +1284,21 @@ button:hover,
 
     .open-label {
 
-        font-size: 11px;
+        font-size: 12px;
         letter-spacing: 2px;
 
     }
 
     .open-circle {
 
-        width: 50px;
-        height: 50px;
+        width: 64px;
+        height: 64px;
+
+    }
+
+    .heart {
+
+        font-size: 30px;
 
     }
 
