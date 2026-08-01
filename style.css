@@ -112,70 +112,357 @@ a {
 
     z-index: 99999;
 
-    transition: opacity .8s ease,
-        visibility .8s ease;
+    transition: opacity 3s ease,
+        visibility 3s ease;
 
 }
 
-.loader-content {
+/* ==========================================================
+   INVITATION DOOR-OPEN COVER
+========================================================== */
 
-    width: min(90%, 520px);
+.door-scene {
 
-    text-align: center;
-
-    padding: 30px;
-
-}
-
-.flower {
-
-    font-size: 70px;
-
-    color: #B17835;
-
-    animation: float 2.5s ease-in-out infinite;
+    position: absolute;
+    inset: 0;
+    perspective: 2400px;
+    overflow: hidden;
 
 }
 
-.loader-content h1 {
+.door {
 
-    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('images/open-invitation.jpg');
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    transform-style: preserve-3d;
+    transition: transform 3s cubic-bezier(.65, 0, .35, 1),
+        opacity 3s ease,
+        box-shadow 3s ease;
+    will-change: transform, opacity;
+
+}
+
+.door-left {
+
+    left: 0;
+    background-position: left center;
+    transform-origin: right center;
+    box-shadow: inset -35px 0 45px -22px rgba(0, 0, 0, .5);
+
+}
+
+.door-right {
+
+    right: 0;
+    background-position: right center;
+    transform-origin: left center;
+    box-shadow: inset 35px 0 45px -22px rgba(0, 0, 0, .5);
+
+}
+
+.door-seam {
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 1px);
+    width: 2px;
+    z-index: 3;
+    background: linear-gradient(180deg,
+            rgba(177, 120, 53, 0) 0%,
+            rgba(177, 120, 53, .9) 12%,
+            rgba(177, 120, 53, .9) 88%,
+            rgba(177, 120, 53, 0) 100%);
+    transition: opacity .5s ease;
+
+}
+
+.door-scene.opening .door-left {
+
+    transform: rotateY(-108deg);
+    opacity: 0;
+
+}
+
+.door-scene.opening .door-right {
+
+    transform: rotateY(108deg);
+    opacity: 0;
+
+}
+
+.door-scene.opening .door-seam {
+
+    opacity: 0;
+
+}
+
+.open-btn {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12%;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    cursor: pointer;
+    animation: fadeUp .8s ease .3s both;
+
+}
+
+/* The generic "button, .venue-button" + "button:hover" rules further down
+   this file are more specific than a bare .open-btn rule (element+:hover
+   beats a single class), so without this override, hovering the heart
+   button reveals the brown button background/shadow stretched across the
+   full-width invisible button box (left:0; right:0 above) — it looks like
+   a broad brown bar across the section. Re-assert "no button chrome" at
+   equal-or-higher specificity for every interaction state. */
+.open-btn,
+.open-btn:hover,
+.open-btn:focus,
+.open-btn:focus-visible,
+.open-btn:active {
+
+    background: none;
+    box-shadow: none;
+    transform: none;
+
+}
+
+.open-circle {
+
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 253, 249, .16);
+    border: 1.5px solid rgba(255, 253, 249, .85);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+    animation: pulseHint 2.4s ease-in-out 1s infinite;
+
+}
+
+.heart {
+
+    display: inline-block;
+    color: #E8462B;
+    font-size: 36px;
+    line-height: 1;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, .4);
+    animation: heartbeat 1.15s ease-in-out infinite;
+    transform-origin: center;
+
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.28);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.22);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+}
+
+/* Stop the heartbeat once the invitation is opening/opened */
+.door-scene.opening .heart {
+
+    animation: none;
+
+}
+
+.open-label {
 
     font-family: 'Cinzel', serif;
-
-    font-size: 40px;
-
-    color: #7B2D26;
-
-}
-
-.loader-content p {
-
-    margin-top: 18px;
-
-    line-height: 1.8;
-
-    color: #666;
-
-    font-size: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #FFFDF9;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, .6);
+    display: inline-block;
+    animation: labelBlink 1.6s ease-in-out infinite;
+    transform-origin: center;
 
 }
 
-.loading-spinner {
+@keyframes labelBlink {
 
-    width: 56px;
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 
-    height: 56px;
+    50% {
+        opacity: .35;
+        transform: scale(1.14);
+    }
 
-    margin: 28px auto;
+}
 
-    border-radius: 50%;
+/* Stop the label blink once the invitation is opening/opened */
+.door-scene.opening .open-label {
 
-    border: 4px solid #E3D7C6;
+    animation: none;
 
-    border-top-color: #B17835;
+}
 
-    animation: spin 1s linear infinite;
+.door-scene.opening .open-btn {
+
+    opacity: 0;
+    transition: opacity .35s ease;
+    pointer-events: none;
+
+}
+
+/* ==========================================================
+   FLYING PARROTS (play once, on door open)
+========================================================== */
+
+.parrots {
+
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+
+}
+
+.parrot {
+
+    position: absolute;
+    width: 90px;
+    height: auto;
+    opacity: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .3));
+}
+
+.door-scene.opening .parrot-1 {
+
+    top: 20%;
+    left: -20%;
+    width: 100px;
+    animation: flyRight 1.7s ease-out .05s forwards;
+
+}
+
+.door-scene.opening .parrot-2 {
+
+    top: 52%;
+    right: -20%;
+    width: 78px;
+    animation: flyLeft 1.8s ease-out .2s forwards;
+
+}
+
+.door-scene.opening .parrot-3 {
+
+    top: 36%;
+    left: -20%;
+    width: 66px;
+    animation: flyRight 1.9s ease-out .35s forwards;
+
+}
+
+.door-scene.opening .parrot-4 {
+
+    top: 68%;
+    right: -20%;
+    width: 58px;
+    animation: flyLeft 1.85s ease-out .5s forwards;
+
+}
+
+@keyframes flyRight {
+
+    0% {
+        transform: translate(0, 0) scale(.9);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(60vw, -8vh) scale(1);
+    }
+
+    100% {
+        transform: translate(130vw, -4vh) scale(1.05);
+        opacity: 0;
+    }
+
+}
+
+@keyframes flyLeft {
+
+    0% {
+        transform: translate(0, 0) scale(.9) scaleX(-1);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-60vw, -6vh) scale(1) scaleX(-1);
+    }
+
+    100% {
+        transform: translate(-130vw, -2vh) scale(1.05) scaleX(-1);
+        opacity: 0;
+    }
+
+}
+
+@keyframes pulseHint {
+
+    0%,
+    100% {
+
+        opacity: .55;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
 
 }
 
@@ -807,6 +1094,42 @@ button:hover,
 
 }
 
+/* RSVP form link */
+
+.popup-form-link {
+
+    display: inline-block;
+
+    margin-top: 22px;
+
+    padding: 12px 30px;
+
+    border-radius: 50px;
+
+    background: #B17835;
+
+    color: #fff;
+
+    font-weight: 600;
+
+    font-size: 15px;
+
+    text-decoration: none;
+
+    transition: .3s;
+
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .18);
+
+}
+
+.popup-form-link:hover {
+
+    background: #98692C;
+
+    transform: translateY(-2px);
+
+}
+
 /* Close Button */
 
 #closePopup {
@@ -940,6 +1263,32 @@ button:hover,
 }
 
 /* ==========================================================
+   LAPTOP / DESKTOP LOADER FRAME
+
+   The cover photo (images/open-invitation.jpg) is a tall portrait
+   image, sized to fill a phone screen edge-to-edge. On a wide
+   laptop screen that same full-bleed treatment crops away most of
+   the photo. From this breakpoint up, frame it as a centered
+   portrait card instead so the invitation "fits" the screen
+   properly rather than being zoomed/cropped.
+========================================================== */
+
+@media (min-width:1025px) {
+
+    .door-scene {
+
+        position: relative;
+        inset: auto;
+        width: min(480px, 88vw);
+        height: min(820px, 88vh);
+        border-radius: 22px;
+        box-shadow: 0 35px 90px rgba(0, 0, 0, .4);
+
+    }
+
+}
+
+/* ==========================================================
    FINAL RESPONSIVE POLISH
 ========================================================== */
 
@@ -980,47 +1329,23 @@ button:hover,
         object-fit: contain;
     }
 
-    .loader-content h1 {
+    .open-label {
 
-        font-size: 32px;
-
-    }
-
-    .loader-content p {
-
-        font-size: 15px;
-
-        line-height: 1.7;
+        font-size: 12px;
+        letter-spacing: 2px;
 
     }
 
-}
+    .open-circle {
 
-/* Small Phones */
-
-@media (max-width:480px) {
-
-    .loader-content {
-
-        padding: 24px;
+        width: 64px;
+        height: 64px;
 
     }
 
-    .loader-content h1 {
+    .heart {
 
-        font-size: 28px;
-
-    }
-
-    .loader-content p {
-
-        font-size: 14px;
-
-    }
-
-    .flower {
-
-        font-size: 56px;
+        font-size: 30px;
 
     }
 
@@ -1174,19 +1499,7 @@ button,
 
 }
 
-/* ---------------- RSVP status line ---------------- */
-
-.rsvp-status {
-
-    margin-top: clamp(2px, 1.5vw, 10px);
-    font-size: clamp(6px, 2vw, 14px);
-    font-style: italic;
-    color: #7B2D26;
-    text-shadow: none;
-    min-height: 1em;
-    text-align: center;
-
-}
+/* ---------------- Selected RSVP button ---------------- */
 
 #finalPage .rsvp-buttons button.selected {
 

@@ -4,43 +4,57 @@
 
 window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
-    const openBtn = document.getElementById("openInvBtn");
-    const spinner = document.querySelector(".loading-spinner");
+    const doorScene = document.getElementById("doorScene");
     const audio = document.getElementById("bg-music");
 
-    if (spinner) spinner.style.display = "none";
+    const DOOR_ANIM_MS = 3000; // must match the door/loader transition duration in style.css
 
-    if (openBtn) {
-        openBtn.style.display = "inline-block";
-        openBtn.addEventListener("click", () => {
-            loader.style.opacity = "0";
-            loader.style.visibility = "hidden";
-            if (audio) {
-                audio.volume = 0.6;
-                const playPromise = audio.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        audio.currentTime = 22; // Skip to 0:22 after it starts
-                    }).catch(e => console.log("Audio play failed:", e));
-                } else {
-                    audio.currentTime = 22;
-                }
+    let opened = false;
 
-                // Loop custom duration: 0:22 to 1:40 (100 seconds)
-                audio.addEventListener("timeupdate", () => {
-                    if (audio.currentTime >= 100) {
-                        audio.currentTime = 22;
-                        audio.play();
-                    }
-                });
+    function openInvitation() {
+        if (opened) return;
+        opened = true;
+
+        // Swing the two door halves open on their inward hinge, and start
+        // fading the whole cover out at the same moment, so the real
+        // invitation is revealed gradually underneath over 3 seconds
+        // instead of popping in the instant the doors finish.
+        if (doorScene) doorScene.classList.add("opening");
+        if (loader) loader.style.opacity = "0";
+
+        if (audio) {
+            audio.volume = 0.6;
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    audio.currentTime = 22; // Skip to 0:22 after it starts
+                }).catch(e => console.log("Audio play failed:", e));
+            } else {
+                audio.currentTime = 22;
             }
-        });
-    } else {
+
+            // Loop custom duration: 0:22 to 1:40 (100 seconds)
+            audio.addEventListener("timeupdate", () => {
+                if (audio.currentTime >= 100) {
+                    audio.currentTime = 22;
+                    audio.play();
+                }
+            });
+        }
+
+        // Once the 3s open/fade sequence has fully finished, remove the
+        // cover from the layout so it can't block clicks on the page.
         setTimeout(() => {
-            loader.style.opacity = "0";
             loader.style.visibility = "hidden";
-        }, 1800);
+            loader.style.pointerEvents = "none";
+        }, DOOR_ANIM_MS);
+    }
+
+    // Only clicking/tapping the heart button opens the invitation
+    const openBtn = document.getElementById("openBtn");
+    if (openBtn) {
+        openBtn.addEventListener("click", openInvitation);
     }
 });
 
@@ -114,24 +128,22 @@ const popupTitle = document.getElementById("popupTitle");
 
 const popupMessage = document.getElementById("popupMessage");
 
+const popupFormLink = document.getElementById("popupFormLink");
+
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const rsvpStatus = document.getElementById("rsvpStatus");
 
 const RSVP_KEY = "thulasiNikhil_rsvp";
+
+const RSVP_FORM_LINKS = {
+    yes: "https://docs.google.com/forms/d/e/1FAIpQLSd4E2-Yh4tkyPr_s6PKD40PYh72-lYspvoJzCmS8yJ-YRmY1A/viewform",
+    no: "https://docs.google.com/forms/d/e/1FAIpQLScB6XvlIVGOSCpIynv8v2nvLDM5fWTp2UU_QByABIExFwMzVg/viewform"
+};
 
 function paintRsvpState(response) {
 
     yesBtn.classList.toggle("selected", response === "yes");
     noBtn.classList.toggle("selected", response === "no");
-
-    if (rsvpStatus) {
-
-        rsvpStatus.textContent =
-            response === "yes" ? "You're on the list — see you there! 💛" :
-                response === "no" ? "Thanks for letting us know 🙏" : "";
-
-    }
 
 }
 
@@ -142,8 +154,6 @@ yesBtn.onclick = () => {
 
     localStorage.setItem(RSVP_KEY, "yes");
     paintRsvpState("yes");
-    
-    window.location.href = "mailto:tulu.reddy1995@gmail.com?subject=RSVP%20Yes:%20Attending%20Tulasi%20and%20Nikhil's%20Wedding!&body=Hi%20Tulasi%20and%20Nikhil,%0A%0AI%20am%20excited%20to%20let%20you%20know%20that%20I%20will%20be%20attending%20your%20wedding!%0A%0APlease%20accept%20my%20RSVP.%0A%0ABest%20regards,%0A[Your Name Here]";
 
     popup.classList.add("show");
 
@@ -158,14 +168,14 @@ yesBtn.onclick = () => {
         See you on <b>28 August 2026</b>.
     `;
 
+    popupFormLink.href = RSVP_FORM_LINKS.yes;
+
 };
 
 noBtn.onclick = () => {
 
     localStorage.setItem(RSVP_KEY, "no");
     paintRsvpState("no");
-    
-    window.location.href = "mailto:tulu.reddy1995@gmail.com?subject=RSVP%20No:%20Cannot%20Attend%20Tulasi%20and%20Nikhil's%20Wedding&body=Hi%20Tulasi%20and%20Nikhil,%0A%0AUnfortunately,%20I%20will%20not%20be%20able%20to%20attend%20the%20wedding.%20Wishing%20you%20both%20a%20lifetime%20of%20happiness!%0A%0ABest%20regards,%0A[Your Name Here]";
 
     popup.classList.add("show");
 
@@ -177,6 +187,8 @@ noBtn.onclick = () => {
         <br><br>
         Thank you for being part of our journey.
     `;
+
+    popupFormLink.href = RSVP_FORM_LINKS.no;
 
 };
 

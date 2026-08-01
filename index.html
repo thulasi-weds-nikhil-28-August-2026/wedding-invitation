@@ -21,7 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=11">
 
 </head>
 
@@ -55,25 +55,27 @@
 
     <div id="loader">
 
-        <div class="loader-content">
+        <div class="door-scene" id="doorScene">
 
-            <div class="flower">♾️</div>
+            <div class="door door-left"></div>
+            <div class="door door-right"></div>
+            <div class="door-seam"></div>
 
-            <h1>Tulasi ❤️ Nikhil</h1>
+            <div class="parrots" id="parrots" aria-hidden="true">
+                <img class="parrot parrot-1" src="images/parrot-flying.png" alt="">
+                <img class="parrot parrot-2" src="images/parrot-flying.png" alt="">
+                <img class="parrot parrot-3" src="images/parrot-flying.png" alt="">
+                <img class="parrot parrot-4" src="images/parrot-flying.png" alt="">
+            </div>
 
-            <p>
-                With the blessings of our families,
-                we invite you to celebrate our wedding.
-            </p>
-
-            <div class="loading-spinner"></div>
-
-            <button id="openInvBtn"
-                style="display: none; padding: 12px 30px; font-size: 1.2rem; margin-top: 25px; cursor: pointer; font-family: 'Cinzel', serif; background: #7B2D26; color: #FFFDF9; border: none; border-radius: 5px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s ease;">Open
-                Invitation</button>
-            <audio id="bg-music" src="videoplayback.mp3" preload="auto"></audio>
+            <button type="button" class="open-btn" id="openBtn" aria-label="Open Invitation">
+                <span class="open-circle"><span class="heart">&#10084;</span></span>
+                <span class="open-label">Open Invitation</span>
+            </button>
 
         </div>
+
+        <audio id="bg-music" src="videoplayback.mp3" preload="auto"></audio>
 
     </div>
 
@@ -213,8 +215,6 @@
 
                         </div>
 
-                        <p class="rsvp-status" id="rsvpStatus"></p>
-
                     </div>
 
                 </div>
@@ -239,6 +239,10 @@
 
             <p id="popupMessage"></p>
 
+            <a id="popupFormLink" class="popup-form-link" href="#" target="_blank" rel="noopener noreferrer">
+                Click here to RSVP
+            </a>
+
         </div>
 
     </div>
@@ -249,7 +253,7 @@
 
     <button id="topButton">↑</button>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=14"></script>
 
 </body>
 
